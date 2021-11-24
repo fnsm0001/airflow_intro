@@ -12,15 +12,17 @@ import numpy as np
 #######################################################################################
 # PARAMETROS
 #######################################################################################
-nameDAG           = 'DAG-poc01-python-funct02'
-project           = 'project-test-01-295316'
-owner             = 'DAVIDRVU'
-email             = ['astroboticapps@gmail.com']
+nameDAG           = 'DAG-poc01-python-funct03'
+project           = 'advance-proton-333021'
+owner             = 'FABIOSALINAS'
+email             = ['fabio.salinas1982@gmail.com']
 GBQ_CONNECTION_ID = 'bigquery_default'
 #######################################################################################
 
 def python_func(ds, **kwargs):
     print("Inicio de función python_func")
+
+    print("HOLA MUNDO")
 
     print("ds = ")
     print(ds)
@@ -61,7 +63,7 @@ def python_func(ds, **kwargs):
 default_args = {
     'owner': owner,                   # The owner of the task.
     'depends_on_past': False,         # Task instance should not rely on the previous task's schedule to succeed.
-    'start_date': datetime.datetime(2020, 11, 5),
+    'start_date': datetime.datetime(2021, 11, 22),
     'email': email,
     'email_on_failure': True,
     'email_on_retry': True,
@@ -72,9 +74,10 @@ default_args = {
 
 with DAG(nameDAG,
          default_args = default_args,
-         catchup = False,  # Ver caso catchup = True
+         catchup = True,  # Ver caso catchup = True
          max_active_runs = 3,
-         schedule_interval = None) as dag: # schedule_interval = None # Caso sin trigger automático | schedule_interval = "0 12 * * *" | "0,2 12 * * *"
+         schedule_interval = "50,51,52 16 * * *") as dag: # schedule_interval = None # Caso sin trigger automático | schedule_interval = "0 12 * * *" | "0,2 12 * * *"
+         # "50,51,52 16 * * *" == “At minute 50, 51, and 52 past hour 16.”
 
     # FUENTE: CRONTRAB: https://crontab.guru/
     #############################################################
