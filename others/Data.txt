@@ -1,0 +1,37 @@
+Define las variables de entorno para Airflow para que pueda enviar correos electrónicos:
+
+Datos del proyecto de pruebas:
+Nombre del proyecto
+My First Project
+Número del proyecto
+63635889389
+ID de proyecto
+advance-proton-333021
+
+Datos del Compositor:
+Nombre: cc001
+Ubicación: us-central1
+Versión de Composer: 1.17.5
+Versión de Airflow: 1.10.12
+fecha y Hora de creación: Fecha y hora de creación
+Link Airflow: https://f9f053cb26622618fp-tp.appspot.com/
+Link registros (log): https://console.cloud.google.com/logs/viewer?resource=cloud_composer_environment%2Flocation%2Fus-central1%2Fenvironment_name%2Fcc001&project=advance-proton-333021&supportedpurview=project
+Link DAG: https://console.cloud.google.com/storage/browser/us-central1-cc001-dd7a50a6-bucket/dags?project=advance-proton-333021&supportedpurview=project
+
+
+
+Datos de SENDMAIL:
+API Key Full Access https://app.sendgrid.com/settings/api_keys
+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
+
+
+Comandos a correr desde Cloud Shell
+
+gcloud auth login
+gcloud config set project advance-proton-333021
+gcloud composer environments update cc001 --location us-central1 --update-env-variables=SENDGRID_MAIL_FROM="fnsm0001@gmail.com",SENDGRID_API_KEY="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"
+
+
+
+Repositorio con los dags del curso:
+https://github.com/davidrvu/airflow_intro
