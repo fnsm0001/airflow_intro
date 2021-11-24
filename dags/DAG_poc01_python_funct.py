@@ -12,7 +12,7 @@ import numpy as np
 #######################################################################################
 # PARAMETROS
 #######################################################################################
-nameDAG           = 'DAG-poc01-python-funct03'
+nameDAG           = 'DAG-poc01-python-funct04'
 project           = 'advance-proton-333021'
 owner             = 'FABIOSALINAS'
 email             = ['fabio.salinas1982@gmail.com']
