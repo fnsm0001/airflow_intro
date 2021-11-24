@@ -1,3 +1,6 @@
+Video del tutorial de Airflow:
+https://www.youtube.com/watch?v=yejn5WBwxI0
+
 Define las variables de entorno para Airflow para que pueda enviar correos electrónicos:
 
 Datos del proyecto de pruebas:
@@ -35,3 +38,46 @@ gcloud composer environments update cc001 --location us-central1 --update-env-va
 
 Repositorio con los dags del curso:
 https://github.com/davidrvu/airflow_intro
+
+La recomendación es crear el repositorio dentro de GCP para que quede linkeado automaticamente al repo de Github para que cuando se actualice GitHub
+tambien lo haga GCP.
+
+Navegar a:
+https://source.cloud.google.com/onboarding/welcome
+o buscar en el menú de hamburguesa la opción de "Source Repositories" y configurar el repositorio de GitHub siguiendo los pasos
+
+
+Navegar desde el menú de hambuerguesa hacia "Cloud Build" y crear un "Activador" o "Trigger"
+Cada vez que se haga un Push en el repositorio el trigger va a copiar la información del repo a la carpeta de dags a de composer.
+
+Información de configuración de Cloud Build:
+
+Nombre: Push-to-airflow-test01
+Repositorio: fnsm0001/airflow_intro
+Configuración de compilación: cloudbuild.yaml
+
+
+Data que contiene el archivo cloudbuild.yaml que se debe encontrar en la carpeta raiz del repositorio en local para luego hacer commit y push al repo:
+Nota: se debe reemplazar ${_GCS_BUCKET} por el nombre del bucket donde esta Airflow
+
+""""INICIO""""
+steps:
+- name: ubuntu
+  args: ['bash', '-c', "echo '$COMMIT_SHA' > REVISION.txt"]
+- name: gcr.io/cloud-builders/gsutil
+  args:
+    - '-m'
+    - 'rsync'
+    - '-d'
+    - '-r'
+    - 'dags'
+    - 'gs://${_GCS_BUCKET}/dags'
+- name: gcr.io/cloud-builders/gsutil
+  args:
+    - '-m'
+    - 'rsync'
+    - '-d'
+    - '-r'
+    - 'plugins'
+    - 'gs://${_GCS_BUCKET}/plugins'
+""""FIN""""
