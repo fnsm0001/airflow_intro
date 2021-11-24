@@ -87,7 +87,7 @@ def python_func4(ds, **kwargs):
 
 def task_branching_callable(**kwargs):
 
-    option = 0
+    option = 1
 
     if ( option == 0 ):
         return "task_opt0" # DESDE AIRFLOW 1.10.3 SE PODRÁ RETORNAR 2 TASK SIMULTANEAMENTE ["task_path1","task_path2"]
