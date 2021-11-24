@@ -76,7 +76,7 @@ with DAG(nameDAG,
          default_args = default_args,
          catchup = True,  # Ver caso catchup = True
          max_active_runs = 3,
-         schedule_interval = "50,51,52 16 * * *") as dag: # schedule_interval = None # Caso sin trigger automático | schedule_interval = "0 12 * * *" | "0,2 12 * * *"
+         schedule_interval = "08,09,10 21 * * *") as dag: # schedule_interval = None # Caso sin trigger automático | schedule_interval = "0 12 * * *" | "0,2 12 * * *"
          # "50,51,52 16 * * *" == “At minute 50, 51, and 52 past hour 16.”
 
     # FUENTE: CRONTRAB: https://crontab.guru/
