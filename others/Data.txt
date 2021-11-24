@@ -86,3 +86,5 @@ steps:
 Video 2 del tutorial:
 https://www.youtube.com/watch?v=HGTA10akCW8
 
+Video 3 del tutorial:
+https://www.youtube.com/watch?v=sC9-4VCEP2A
