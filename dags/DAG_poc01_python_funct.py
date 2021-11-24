@@ -63,7 +63,7 @@ def python_func(ds, **kwargs):
 default_args = {
     'owner': owner,                   # The owner of the task.
     'depends_on_past': False,         # Task instance should not rely on the previous task's schedule to succeed.
-    'start_date': datetime.datetime(2021, 11, 22),
+    'start_date': datetime.datetime(2021, 11, 15),
     'email': email,
     'email_on_failure': True,
     'email_on_retry': True,
